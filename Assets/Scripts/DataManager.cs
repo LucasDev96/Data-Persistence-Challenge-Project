@@ -58,7 +58,8 @@ public class DataManager : MonoBehaviour
     {
         if (System.IO.File.Exists(Application.persistentDataPath + "/HighScoreData.json"))
         {
-            PlayerData data = JsonUtility.FromJson<PlayerData>(Application.persistentDataPath + "/HighScoreData.json");
+            string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/HighScoreData.json");
+            PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
             highScoreName = data.name;
             highScore = data.points;

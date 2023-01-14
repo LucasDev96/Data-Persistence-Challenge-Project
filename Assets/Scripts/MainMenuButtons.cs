@@ -40,4 +40,14 @@ public class MainMenuButtons : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    // Reset the scores and overwrite the high score file, reloading the scene so everything updates properly
+    public void ResetScores()
+    {
+        DataManager.Instance.highScore = 0;
+        DataManager.Instance.highScoreName = "name";
+
+        DataManager.Instance.SaveHighScoreToFile();
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
 }

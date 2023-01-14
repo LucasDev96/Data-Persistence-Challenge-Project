@@ -18,7 +18,7 @@ public class MainMenuText : MonoBehaviour
     // Set the high score name and text
     void SetHighScoreText()
     {
-        highScoreText.text = $"High Score:\n{DataManager.Instance.highScoreName} - {DataManager.Instance.highScore}";
+        highScoreText.text = $"Current High Score:\n{DataManager.Instance.highScoreName} - {DataManager.Instance.highScore}";
     }
 
     // If returning from the game scene, fill the player's name back into the input field

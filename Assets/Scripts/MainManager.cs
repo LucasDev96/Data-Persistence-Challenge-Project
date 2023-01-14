@@ -18,7 +18,6 @@ public class MainManager : MonoBehaviour
     
     private bool m_Started = false;
     private int m_Points;
-    private int m_HighScore = 0;
     
     private bool m_GameOver = false;
     private bool m_GamePaused = false;
@@ -27,6 +26,8 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f; //ensure game time is normal, because of pause implementation
+        SetHighScoreText();
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -45,7 +46,6 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
-        Time.timeScale = 1f; //ensure game time is normal, because of pause implementation
         if (!m_Started && !m_GamePaused)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -104,8 +104,8 @@ public class MainManager : MonoBehaviour
     // Set the text for the high score if the new score is higher
     private void SetHighScoreText()
     {
-        if (m_Points > m_HighScore) m_HighScore = m_Points;
-        HighScoreText.text = $"High Score: {m_HighScore}";
+        if (m_Points > DataManager.Instance.highScore) DataManager.Instance.highScore = m_Points;
+        HighScoreText.text = $"High Score: {DataManager.Instance.highScoreName} - {DataManager.Instance.highScore}";
     }
 
     // Set the playerScore in the DataManager, and adjust highscore variables if needed

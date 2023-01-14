@@ -20,6 +20,8 @@ public class DataManager : MonoBehaviour
             return;
         }
 
+        if (highScoreName == null) highScoreName = "name";
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }

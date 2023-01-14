@@ -28,6 +28,8 @@ public class MainManager : MonoBehaviour
     {
         Time.timeScale = 1f; //ensure game time is normal, because of pause implementation
         SetHighScoreText();
+        ButtonsHolder.SetActive(false);
+
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -79,6 +81,7 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        ButtonsHolder.SetActive(true);
         SetPlayerScore();
         SetHighScoreText();
     }

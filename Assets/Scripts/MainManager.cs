@@ -11,10 +11,12 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text HighScoreText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
     private int m_Points;
+    private int m_HighScore = 0;
     
     private bool m_GameOver = false;
 
@@ -73,6 +75,14 @@ public class MainManager : MonoBehaviour
         m_GameOver = true;
         GameOverText.SetActive(true);
         SetPlayerScore();
+        SetHighScoreText();
+    }
+
+    // Set the text for the high score if the new score is higher
+    private void SetHighScoreText()
+    {
+        if (m_Points > m_HighScore) m_HighScore = m_Points;
+        HighScoreText.text = $"High Score: {m_HighScore}";
     }
 
     // Set the playerScore in the DataManager

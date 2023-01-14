@@ -548,6 +548,8 @@ MonoBehaviour:
   ScoreText: {fileID: 188020406}
   HighScoreText: {fileID: 2078529056}
   GameOverText: {fileID: 474497238}
+  PauseText: {fileID: 718599640}
+  ButtonsHolder: {fileID: 954124868}
 --- !u!1 &455529321
 GameObject:
   m_ObjectHideFlags: 0

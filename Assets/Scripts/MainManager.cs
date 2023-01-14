@@ -13,12 +13,15 @@ public class MainManager : MonoBehaviour
     public Text ScoreText;
     public Text HighScoreText;
     public GameObject GameOverText;
+    public GameObject PauseText;
+    public GameObject ButtonsHolder;
     
     private bool m_Started = false;
     private int m_Points;
     private int m_HighScore = 0;
     
     private bool m_GameOver = false;
+    private bool m_GamePaused = false;
 
     
     // Start is called before the first frame update
@@ -42,7 +45,7 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
-        if (!m_Started)
+        if (!m_Started && !m_GamePaused)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -62,6 +65,7 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+        PauseGame();
     }
 
     void AddPoint(int point)
@@ -76,6 +80,24 @@ public class MainManager : MonoBehaviour
         GameOverText.SetActive(true);
         SetPlayerScore();
         SetHighScoreText();
+    }
+
+    private void PauseGame()
+    {
+        if (!m_GamePaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            m_GamePaused = true;
+            ButtonsHolder.SetActive(true);
+            PauseText.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else if (m_GamePaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            m_GamePaused = false;
+            ButtonsHolder.SetActive(false);
+            PauseText.SetActive(false);
+            Time.timeScale = 1f;
+        }
     }
 
     // Set the text for the high score if the new score is higher

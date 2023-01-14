@@ -20,6 +20,7 @@ public class DataManager : MonoBehaviour
             return;
         }
 
+        LoadPlayerDataFromSaveFile();
         if (highScoreName == null) highScoreName = "name";
 
         Instance = this;

@@ -33,6 +33,7 @@ public class MainMenuButtons : MonoBehaviour
     // Exit the application, or play mode if in the editor
     public void ExitGame()
     {
+        DataManager.Instance.SaveHighScoreToFile();
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else

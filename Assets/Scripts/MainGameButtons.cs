@@ -7,6 +7,7 @@ public class MainGameButtons : MainMenuButtons
 {
     public void GoToMainMenu()
     {
+        DataManager.Instance.SaveHighScoreToFile();
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

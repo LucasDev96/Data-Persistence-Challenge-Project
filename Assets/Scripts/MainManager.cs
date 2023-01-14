@@ -90,6 +90,7 @@ public class MainManager : MonoBehaviour
     {
         if (!m_GamePaused && Input.GetKeyDown(KeyCode.Escape))
         {
+            SetPlayerScore();
             m_GamePaused = true;
             ButtonsHolder.SetActive(true);
             PauseText.SetActive(true);

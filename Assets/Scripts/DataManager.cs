@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager instance;
+    public static DataManager Instance;
 
     private string playerName { get; set; }
     private int playerScore { get; set; }
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 

@@ -7,8 +7,8 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
 
-    private string playerName { get; set; }
-    private int playerScore { get; set; }
+    public string playerName { get; set; }
+    public int playerScore { get; set; }
 
     private void Awake()
     {

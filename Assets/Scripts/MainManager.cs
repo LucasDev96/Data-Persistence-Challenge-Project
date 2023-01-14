@@ -45,6 +45,7 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
+        Time.timeScale = 1f; //ensure game time is normal, because of pause implementation
         if (!m_Started && !m_GamePaused)
         {
             if (Input.GetKeyDown(KeyCode.Space))

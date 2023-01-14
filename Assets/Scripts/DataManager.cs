@@ -36,9 +36,31 @@ public class DataManager : MonoBehaviour
     [Serializable]
     public class PlayerData
     {
-        string name;
-        int points;
+        public string name;
+        public int points;
     }
 
-    
+    // Use the PlayerData class to save the highest player score and name to a json file
+    public void SaveHighScoreToFile()
+    {
+        PlayerData data = new PlayerData();
+        data.name = highScoreName;
+        data.points = highScore;
+
+        string json = JsonUtility.ToJson(data);
+
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/HighScoreData.json", json);
+    }
+
+    // Read from the json save file, if it exists, and set the appropriate variables
+    public void LoadPlayerDataFromSaveFile()
+    {
+        if (System.IO.File.Exists(Application.persistentDataPath + "/HighScoreData.json"))
+        {
+            PlayerData data = JsonUtility.FromJson<PlayerData>(Application.persistentDataPath + "/HighScoreData.json");
+
+            highScoreName = data.name;
+            highScore = data.points;
+        }
+    }
 }

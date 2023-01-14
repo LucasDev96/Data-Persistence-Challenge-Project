@@ -85,9 +85,15 @@ public class MainManager : MonoBehaviour
         HighScoreText.text = $"High Score: {m_HighScore}";
     }
 
-    // Set the playerScore in the DataManager
+    // Set the playerScore in the DataManager, and adjust highscore variables if needed
     public void SetPlayerScore()
     {
         DataManager.Instance.playerScore = m_Points;
+
+        if (m_Points > DataManager.Instance.highScore)
+        {
+            DataManager.Instance.highScore = m_Points;
+            DataManager.Instance.highScoreName = DataManager.Instance.playerName;
+        }
     }
 }

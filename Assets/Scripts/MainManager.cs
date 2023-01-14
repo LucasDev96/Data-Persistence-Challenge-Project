@@ -72,5 +72,12 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        SetPlayerScore();
+    }
+
+    // Set the playerScore in the DataManager
+    public void SetPlayerScore()
+    {
+        DataManager.Instance.playerScore = m_Points;
     }
 }
